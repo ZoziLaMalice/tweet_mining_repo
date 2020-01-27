@@ -23,13 +23,13 @@ def get_tweets(username):
     api = tweepy.API(auth)
 
     # set count to however many tweets you want
-    number_of_tweets = 10
+    number_of_tweets = 1000
 
     # get tweets
     tweets_for_csv = []
     for tweet in tweepy.Cursor(api.user_timeline, id=username).items(number_of_tweets):
         # create array of tweet information: username, tweet id, date/time, text
-        tweets_for_csv.append([username, tweet.id_str, tweet.created_at, tweet.text])
+        tweets_for_csv.append([tweet.id_str, username, tweet.text])
 
 
 
@@ -38,6 +38,8 @@ def get_tweets(username):
     print("writing to " + outfile)
     with open(outfile, 'w', encoding='utf8') as file:
         writer = csv.writer(file, delimiter=',')
+        # Adding the header.
+        writer.writerow(["datetime", "author", "body"])
         writer.writerows(tweets_for_csv)
 
 

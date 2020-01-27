@@ -583,20 +583,20 @@ def generate_most_common_entities_word_cloud(df):
 
 if __name__ == "__main__":
 
-    submissions_df = pd.read_csv("submissions.csv",
-                           parse_dates=["datetime"], index_col=0)
+    #submissions_df = pd.read_csv("submissions.csv",
+                           #parse_dates=["datetime"], index_col=0)
 
-    comments_df = pd.read_csv("comments.csv",
-                              parse_dates=["datetime"], index_col=0)
+    #comments_df = pd.read_csv("comments.csv",
+                              #parse_dates=["datetime"], index_col=0)
 
     tokens_df = pd.read_csv("tokens.csv")
     entities_df = pd.read_csv("entities.csv")
 
 generate_most_common_entities_word_cloud(entities_df)
 generate_most_common_words_word_cloud(tokens_df)
-plot_comments_by_user(comments_df)
-plot_submissions_by_user(submissions_df)
-plot_yearly_submissions_and_comments(submissions_df, comments_df)
-plot_submissions_and_comments_by_hour(submissions_df, comments_df)
-plot_submissions_and_comments_by_weekday(submissions_df, comments_df)
-get_insights(submissions_df, comments_df)
+# plot_comments_by_user(comments_df)
+# plot_submissions_by_user(submissions_df)
+# plot_yearly_submissions_and_comments(submissions_df, comments_df)
+# plot_submissions_and_comments_by_hour(submissions_df, comments_df)
+# plot_submissions_and_comments_by_weekday(submissions_df, comments_df)
+# get_insights(submissions_df, comments_df)
