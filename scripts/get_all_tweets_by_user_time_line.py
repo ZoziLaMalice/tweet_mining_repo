@@ -9,10 +9,11 @@ import re
 import tweepy
 
 # Get your Twitter API credentials and enter them here
-consumer_key = ""
-consumer_secret = ""
-access_key = ""
-access_secret = ""
+consumer_key = ''
+consumer_secret = ''
+
+access_key = '-'
+access_secret = ''
 
 
 def get_all_tweets(screen_name):
@@ -53,6 +54,14 @@ def get_all_tweets(screen_name):
     # transform the tweepy tweets into a 2D array that will populate the csv
     outtweets = [[tweet.id_str, tweet.created_at, tweet.text] for tweet in alltweets]
 
-    print(outtweets)
+    # write to a new csv file from the array of tweets
+    outfile = os.path.normpath(os.getcwd() + os.sep + os.pardir) + '/comments/' + screen_name + "_tweets.csv"
+    print("writing to " + outfile)
+    with open(outfile, 'w', encoding='utf8') as file:
+        writer = csv.writer(file, delimiter=',')
+        # Adding the header.
+        writer.writerow(["datetime", "author", "body"])
+        writer.writerows(outtweets)
 
-get_all_tweets('MonsieurDream')
+
+get_all_tweets('J_tsar')

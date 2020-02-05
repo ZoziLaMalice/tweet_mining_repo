@@ -4,15 +4,17 @@ import sys
 import csv
 import os
 import re
+from tqdm import tqdm
 
 # http://www.tweepy.org/
 import tweepy
 
 # Get your Twitter API credentials and enter them here
-consumer_key = ""
-consumer_secret = ""
-access_key = "-"
-access_secret = ""
+consumer_key = ''
+consumer_secret = ''
+
+access_key = '-'
+access_secret = ''
 
 
 # method to get a user's last tweets
@@ -27,9 +29,10 @@ def get_tweets(username):
 
     # get tweets
     tweets_for_csv = []
-    for tweet in tweepy.Cursor(api.user_timeline, id=username).items(number_of_tweets):
+    for tweet in tqdm(tweepy.Cursor(api.user_timeline, id=username).items(number_of_tweets)):
         # create array of tweet information: username, tweet id, date/time, text
         tweets_for_csv.append([tweet.id_str, username, tweet.text])
+
 
 
 
@@ -41,6 +44,7 @@ def get_tweets(username):
         # Adding the header.
         writer.writerow(["datetime", "author", "body"])
         writer.writerows(tweets_for_csv)
+
 
 
 # if we're running this as a script
