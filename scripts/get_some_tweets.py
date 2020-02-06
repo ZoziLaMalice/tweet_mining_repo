@@ -27,9 +27,7 @@ def get_tweets(username):
     # http://tweepy.readthedocs.org/en/v3.1.0/getting_started.html#api
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_key, access_secret)
-    api = tweepy.API(auth)
-
-    api.update_status('Test')
+    api = tweepy.API(auth, wait_on_rate_limit=True)
 
     # set count to however many tweets you want
     number_of_tweets = 1000

@@ -20,7 +20,7 @@ def main():
 
     comments_list = list()
 
-    for row in csv.DictReader(open("./tweets.csv", "r", encoding="utf-8")):
+    for row in csv.DictReader(open("../comments/tweets.csv", "r", encoding="utf-8")):
         comments_list.append(row["body"])
 
     # We take 50,000 random comments from the comments list.
