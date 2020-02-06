@@ -5,16 +5,21 @@ import csv
 import os
 import re
 from tqdm import tqdm
+import configparser as cp
 
 # http://www.tweepy.org/
 import tweepy
 
-# Get your Twitter API credentials and enter them here
-consumer_key = ''
-consumer_secret = ''
+config = cp.ConfigParser()
 
-access_key = '-'
-access_secret = ''
+config.read('config.ini')
+
+# Get your Twitter API credentials and enter them here
+consumer_key = config.get('AUTH', 'consumer_key')
+consumer_secret = config.get('AUTH', 'consumer_secret')
+
+access_key = config.get('AUTH', 'access_key')
+access_secret = config.get('AUTH', 'access_secret')
 
 
 # method to get a user's last tweets
@@ -23,6 +28,8 @@ def get_tweets(username):
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_key, access_secret)
     api = tweepy.API(auth)
+
+    api.update_status('Test')
 
     # set count to however many tweets you want
     number_of_tweets = 1000
