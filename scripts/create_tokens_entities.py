@@ -20,13 +20,13 @@ def main():
 
     comments_list = list()
 
-    for row in csv.DictReader(open("../comments/tweets.csv", "r", encoding="utf-8")):
+    for row in csv.DictReader(open("../comments/CoronavirusOutbreak_tweets.csv", "r", encoding="utf-8")):
         comments_list.append(row["body"])
 
     # We take 50,000 random comments from the comments list.
     corpus = random.sample(comments_list, 1000)
     
-    nlp = spacy.load("fr_core_news_sm")
+    nlp = spacy.load("en_core_web_sm")
 
     # Our corpus is bigger than the default limit, we will set
     # a new limit.

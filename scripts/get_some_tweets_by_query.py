@@ -33,7 +33,7 @@ query = "#CoronavirusOutbreak" # -filter:retweets"
 
 
 date_since = "2019-11-16"
-number_of_tweets = 10000
+number_of_tweets = 1000
 
 # get tweets
 tweets_for_csv = []
