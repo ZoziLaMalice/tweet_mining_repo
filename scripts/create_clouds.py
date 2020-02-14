@@ -26,11 +26,11 @@ sns.set(style="ticks",
         )
 
 
-MASK_FILE = r"C:\Users\LCamus\Documents\Perso\Text_Mining\subreddit-analyzer\assets\cloud.png"
-FONT_FILE = r"C:\Users\LCamus\Documents\Perso\Text_Mining\subreddit-analyzer\assets\sofiapro-light.otf"
-EN_STOPWORDS = r"C:\Users\LCamus\Documents\Perso\Text_Mining\subreddit-analyzer\assets\stopwords-en.txt"
-ES_STOPWORDS = r"C:\Users\LCamus\Documents\Perso\Text_Mining\subreddit-analyzer\assets\stopwords-es.txt"
-FR_STOPWORDS = r"C:\Users\LCamus\Documents\Perso\Text_Mining\subreddit-analyzer\assets\stopwords-fr.txt"
+MASK_FILE = r"..\assets\cloud.png"
+FONT_FILE = r"..\assets\sofiapro-light.otf"
+EN_STOPWORDS = r"..\assets\stopwords-en.txt"
+ES_STOPWORDS = r"..\assets\stopwords-es.txt"
+FR_STOPWORDS = r"..\assets\stopwords-fr.txt"
 
 
 def get_most_common_domains(df):

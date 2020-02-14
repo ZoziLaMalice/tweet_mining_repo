@@ -11,7 +11,6 @@ import configparser as cp
 import tweepy
 
 config = cp.ConfigParser()
-
 config.read('config.ini')
 
 # Get your Twitter API credentials and enter them here

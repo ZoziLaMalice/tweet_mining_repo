@@ -20,17 +20,17 @@ def main():
 
     comments_list = list()
 
-    for row in csv.DictReader(open("../comments/CoronavirusOutbreak_tweets.csv", "r", encoding="utf-8")):
+    for row in csv.DictReader(open("../comments/#CoronavirusOutbreak_tweets.csv", "r", encoding="utf-8")):
         comments_list.append(row["body"])
 
     # We take 50,000 random comments from the comments list.
-    corpus = random.sample(comments_list, 1000)
+    corpus = random.sample(comments_list, 17000)
     
     nlp = spacy.load("en_core_web_sm")
 
     # Our corpus is bigger than the default limit, we will set
     # a new limit.
-    nlp.max_length = 10000000
+    nlp.max_length = 200000
 
     get_tokens(nlp, corpus)
     get_entities(nlp, corpus)
