@@ -1,3 +1,2 @@
 # tweet_mining_repo
-
-private for now
+Scripts to dowload and analyze them
