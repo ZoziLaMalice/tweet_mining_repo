@@ -33,14 +33,14 @@ def get_tweets_by_query(query, nb_tweets):
     #     print(tweet.user.screen_name,' --- ', tweet.user.location,' --- ', tweet.full_text)
 
 
-    date_since = datetime.today()
+    date_until = datetime.today().strftime('%Y-%m-%d')
     number_of_tweets = nb_tweets
 
     # get tweets
     tweets_for_csv = []
-    for tweet in tqdm(tweepy.Cursor(api.search, q=query, lang="en").items(number_of_tweets)):
+    for tweet in tqdm(tweepy.Cursor(api.search, q=query, lang="en", until=date_until).items(number_of_tweets)):
         # create array of tweet information: username, tweet id, date/time, text
-        tweets_for_csv.append([tweet.id_str, tweet.user.screen_name, tweet.text])
+        tweets_for_csv.append([tweet.created_at, tweet.user.screen_name, tweet.text])
 
     query_to_filename = re.sub('#', '', query)
 
@@ -122,9 +122,8 @@ def get_all_tweets_by_query(query):
         writer.writerows(outtweets)
 
 
-# json_limit = api.rate_limit_status()
-# print("Calls restants : " + str(json_limit['resources']['search']['/search/tweets']['remaining']) + '\n')
+json_limit = api.rate_limit_status()
+print("Calls restants : " + str(json_limit['resources']['search']['/search/tweets']['remaining']) + '\n')
 
-# get_all_tweets_by_query("#AAPL")
+get_all_tweets_by_query("#MSFT")
 
-get_tweets_by_query('#AAPL', 1000)
